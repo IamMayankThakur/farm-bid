@@ -22,6 +22,15 @@ services:
       - "8000:8000"
     depends_on:
       - redis
+  websocket:
+    build: websocket_app/
+    command: "python app.py"
+    volumes:
+      - ./websocket_app/:/flask_app/
+    ports:
+      - "9000:9000"
+    depends_on:
+      - redis
   nginx:
     image: nginx
     ports:
@@ -33,9 +42,21 @@ services:
       - ./static/:/django_app/static/
     depends_on:
       - web
+  celery:
+    build: .
+    command: >
+      sh -c "celery -A farmbid worker -l info"
+    volumes:
+      - .:/django_app
+      - ./worker.state:/var/run/celery/worker.state
+    depends_on:
+      - redis
+      - web
 volumes:
   redis_db:
   django_app:
+  websocket_app:
   nginx_conf:
+  worker.state:
   static:
   container_log:

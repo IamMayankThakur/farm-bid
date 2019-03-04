@@ -36,3 +36,4 @@ class Bid(models.Model):
     current_highest = models.FloatField(null=True, blank=True)
     current_bidder = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now=True)
+    task_id = models.CharField(max_length=200, null=True)

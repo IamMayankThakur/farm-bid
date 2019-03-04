@@ -1,11 +1,16 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.utils import timezone
+from django.conf import settings
 from . models import SellerProfile, BuyerProfile, User, Bid, Item, Rating
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Item, Category, BuyerProfile, SellerProfile
 from django.contrib.auth.models import User
 from rest_framework import status
+from farmbid import celery_app
+from .tasks import check_for_bid_confirmation
+from datetime import timedelta
+import requests
 
 
 def index(request):
@@ -46,6 +51,8 @@ class LoginUser(APIView):
         if not user.check_password(password):
             return Response({'success': False, 'error': 'Password is invalid'})
         return Response({'success': True, 'email': email,})
+
+
 class GetSellerDetails(APIView):
     def get(self, request):
         seller_id = request.GET.get("sellerId")
@@ -63,13 +70,45 @@ class PlaceBid(APIView):
         item_id = request.data['itemId']
         price = request.data['price']
         item = Item.objects.get(id=item_id)
-        highest_bid = Bid.objects.get(item=item)
-        if highest_bid['current_highest'] > price:
-            return Response(data="Price lower than the highest bid", status=status.HTTP_406_NOT_ACCEPTABLE)
-        else:
-            Bid(item=item, current_highest=price, current_bidder=BuyerProfile.objects.get(
-                user=User.objects.get(id=buyer_id))).save()
-            return Response(status=status.HTTP_200_OK)
+        bid = Bid.objects.filter(item=item)
+        if not bid:
+            bid = Bid.objects.create(item=item, current_highest=price,
+                current_bidder=BuyerProfile.objects.get(
+                user=User.objects.get(id=buyer_id)))
+            # schedule task
+            res = check_for_bid_confirmation.apply_async(
+                (bid.id,), countdown=60
+            )
+            bid.task_id = res.id
+            bid.save()
+            data = {
+                'message': 'Bid placed for new item'
+            }
+            requests.post(settings.WEBSOCKET_URL + '/bid-placed/',
+                          data=data)
+            return Response({})
+        bid = bid[0]
+        if timezone.now() > bid.time + timedelta(seconds=60):
+            return Response({'success': False,
+                             'error': 'Bid time expired'})
+        if bid.current_highest > price:
+            return Response(data="Price lower than the highest bid",
+                            status=status.HTTP_406_NOT_ACCEPTABLE)
+        bid.current_highest = price
+        bid.current_bidder = buyer_id
+        bid.time = timezone.now()
+        bid.save()
+        # delete earlier task
+        celery_app.control.revoke(bid.task_id)
+        # schedule task
+        res = check_for_bid_confirmation.apply_async(
+                (bid.id,), countdown=60
+        )
+        bid.task_id = res.id
+        bid.save()
+        requests.post(settings.WEBSOCKET_URL + '/bid-placed/',
+                      data={'message': 'New bid placed'})
+        return Response(status=status.HTTP_200_OK)
 
 
 class RateItem(APIView):

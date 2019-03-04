@@ -25,7 +25,7 @@ SECRET_KEY = 'h%qj7j(8$uw^%%*0(wttzmwx#b*32q^&5!b-hg-3cxamp#=q3&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Calcutta'
 
 USE_I18N = True
 
@@ -127,10 +127,16 @@ ASGI_APPLICATION = 'farmbid.routing.application'
 
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
             'hosts': [('redis', 6379)],
         },
-        'ROUTING': 'farmbid.routing.channel_routing',
-    }
+    },
 }
+
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Calcutta'
+
+WEBSOCKET_URL = 'http://websocket:9000'
