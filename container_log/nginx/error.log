@@ -1,0 +1,1 @@
+2019/03/04 06:56:43 [emerg] 1#1: host not found in upstream "web:8000" in /etc/nginx/nginx.conf:9

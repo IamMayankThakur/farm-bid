@@ -11,11 +11,11 @@ class BuyerProfile(models.Model):
 class SellerProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     aadhar_no = models.CharField(max_length=12)
-    rating = models.IntegerField(null=True, blank=True)
+    rating = models.DecimalField(null=True, blank=True, max_digits=4, decimal_places=2)
 
 
 class Category(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length = 256)
 
 
 class Item(models.Model):
@@ -23,14 +23,14 @@ class Item(models.Model):
     seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
     buyer = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now=True)
-    costSold = models.FloatField(blank=True)
-    basePrice = models.FloatField(blank=False)
+    cost_sold = models.FloatField(blank=True)
+    base_price = models.FloatField(blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
 class Rating(models.Model):
     rated_by = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE)
-    rated_to = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
+    rated_to = models.ForeignKey(SellerProfile, on_delete=models.CASCADE, related_name="ratings")
     rated_on = models.ForeignKey(Item, on_delete=models.CASCADE)
     rating = models.IntegerField()
 
