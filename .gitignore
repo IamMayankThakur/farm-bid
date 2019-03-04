@@ -2,3 +2,4 @@
 local/
 db.sqlite3
 gunicorn.error
+*.pyc
