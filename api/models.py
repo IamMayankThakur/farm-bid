@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
-
 
 class BuyerProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -23,8 +21,8 @@ class Item(models.Model):
     seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
     buyer = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now=True)
-    cost_sold = models.FloatField(blank=True)
-    base_price = models.FloatField(blank=False)
+    cost_sold = models.FloatField(blank=True, null=True)
+    base_price = models.FloatField(blank=False, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
@@ -35,6 +33,6 @@ class Rating(models.Model):
 
 class Bid(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    current_highest = models.FloatField(blank=True)
+    current_highest = models.FloatField(null=True, blank=True)
     current_bidder = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now=True)

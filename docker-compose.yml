@@ -1,6 +1,12 @@
 version: '3'
 
 services:
+  redis:
+    image: redis
+    ports:
+      - "6660:6379"
+    volumes:
+      - redis_db:/var/lib/redis
   web:
     build: .
     command: >
@@ -14,7 +20,8 @@ services:
       - ./container_log/:/var/log/
     ports:
       - "8000:8000"
-
+    depends_on:
+      - redis
   nginx:
     image: nginx
     ports:
@@ -27,6 +34,7 @@ services:
     depends_on:
       - web
 volumes:
+  redis_db:
   django_app:
   nginx_conf:
   static:
