@@ -151,3 +151,30 @@ class Item(APIView):
             category=cat
         )
         return Response(data={'item_id': item.id})
+
+
+class ItemStats(APIView):
+    def post(self, request):
+        item_name = request.data['item_name']
+        items = Item.objects.filter(name=item_name,
+                                    cost_sold__ne=None).order_by(
+            '-time'
+        )
+        prices = []
+        cur_date = items[0].time.date
+        count = 1
+        sum = items[0].cost_sold
+        for item in items[1:]:
+            if item.time.date == cur_date:
+                count += 1
+                sum += item.cost_sold
+            else:
+                prices.append(sum / count)
+                count = 1
+                sum = item.cost_sold
+        prices.append(sum / count)
+        return Response(data=prices)
+
+
+
+            prices.append(item.cost_sold)
