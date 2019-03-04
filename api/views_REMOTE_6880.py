@@ -3,8 +3,6 @@ from django.http import HttpResponse
 from . models import SellerProfile, BuyerProfile, User, Bid, Item, Rating
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Item, Category, BuyerProfile, SellerProfile
-from django.contrib.auth.models import User
 from rest_framework import status
 
 
@@ -12,40 +10,6 @@ def index(request):
     return HttpResponse('Hello')
 
 
-class RegisterUser(APIView):
-    def post(self, request):
-        username = request.data['username']
-        email = request.data['email']
-        password = request.data['password']
-        if User.objects.filter(email=email).exists():
-            data = {'success': False, 'error': 'Email already exists'}
-            return Response(data)
-        if User.objects.filter(username=username).exists():
-            data = {'success': False, 'error': 'Username already exists'}
-            return Response(data)
-        user = User.objects.create_user(username, email=email, password=password)
-        if request.data['user-kind'] == 'BUYER':
-            BuyerProfile.objects.create(
-                user=user
-            )
-        else:
-            SellerProfile.objects.create(
-                user=user,
-                aadhar_no=request.data['aadhar_no'],
-            )
-        return Response(data={})
-
-
-class LoginUser(APIView):
-    def post(self, request):
-        email = request.data['email']
-        password = request.data['password']
-        if not User.objects.filter(email=email).exists():
-            return Response({'success': False, 'error': 'Email does not exist'})
-        user = User.objects.get(email=email)
-        if not user.check_password(password):
-            return Response({'success': False, 'error': 'Password is invalid'})
-        return Response({'success': True, 'email': email,})
 class GetSellerDetails(APIView):
     def get(self, request):
         seller_id = request.GET.get("sellerId")

@@ -27,14 +27,12 @@ class Item(models.Model):
 
 
 class Rating(models.Model):
-    rated_by = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE)
-    rated_to = models.ForeignKey(SellerProfile, on_delete=models.CASCADE, related_name="ratings")
     rated_on = models.ForeignKey(Item, on_delete=models.CASCADE)
     rating = models.IntegerField()
 
 
 class Bid(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    current_highest = models.FloatField(null=True)
+    current_highest = models.FloatField(null=True, blank=True)
     current_bidder = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE)
     time = models.DateTimeField(auto_now=True)

@@ -3,15 +3,19 @@ from django.http import HttpResponse
 from . models import SellerProfile, BuyerProfile, User, Bid, Item, Rating
 from rest_framework.views import APIView
 from rest_framework.response import Response
+<<<<<<< HEAD
 from .models import Item, Category, BuyerProfile, SellerProfile
 from django.contrib.auth.models import User
+=======
 from rest_framework import status
+>>>>>>> mayank_dev
 
 
 def index(request):
     return HttpResponse('Hello')
 
 
+<<<<<<< HEAD
 class RegisterUser(APIView):
     def post(self, request):
         username = request.data['username']
@@ -46,6 +50,7 @@ class LoginUser(APIView):
         if not user.check_password(password):
             return Response({'success': False, 'error': 'Password is invalid'})
         return Response({'success': True, 'email': email,})
+=======
 class GetSellerDetails(APIView):
     def get(self, request):
         seller_id = request.GET.get("sellerId")
@@ -78,6 +83,7 @@ class RateItem(APIView):
         rating = request.data['rating']
         Rating(rated_on=Item.objects.get(id=item_id), rating=rating)
         return Response(status=status.HTTP_200_OK)
+>>>>>>> mayank_dev
 
 
 class Item(APIView):
