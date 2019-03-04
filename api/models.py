@@ -17,9 +17,10 @@ class Category(models.Model):
 
 
 class Item(models.Model):
-    name = models.TextField(max_length=512, blank=False)
+    name = models.CharField(max_length=50, blank=False)
+    quantity = models.IntegerField(default=1)
     seller = models.ForeignKey(SellerProfile, on_delete=models.CASCADE)
-    buyer = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE)
+    buyer = models.ForeignKey(BuyerProfile, on_delete=models.CASCADE, null=True, blank=True)
     time = models.DateTimeField(auto_now=True)
     cost_sold = models.FloatField(blank=True, null=True)
     base_price = models.FloatField(blank=False, null=True)

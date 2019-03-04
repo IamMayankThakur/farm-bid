@@ -1,1 +1,7 @@
 2019/03/04 06:56:43 [emerg] 1#1: host not found in upstream "web:8000" in /etc/nginx/nginx.conf:9
+2019/03/04 18:12:40 [emerg] 1#1: host not found in upstream "web:8000" in /etc/nginx/nginx.conf:9
+2019/03/04 18:14:36 [emerg] 1#1: host not found in upstream "web:8000" in /etc/nginx/nginx.conf:9
+2019/03/04 21:01:28 [emerg] 1#1: host not found in upstream "web:8000" in /etc/nginx/nginx.conf:9
+2019/03/04 21:05:42 [emerg] 1#1: host not found in upstream "web:8000" in /etc/nginx/nginx.conf:9
+2019/03/04 21:09:17 [error] 6#6: *1 connect() failed (113: No route to host) while connecting to upstream, client: 192.168.64.1, server: , request: "GET /admin/ HTTP/1.1", upstream: "http://192.168.64.3:8000/admin/", host: "localhost"
+2019/03/04 21:14:59 [emerg] 1#1: host not found in upstream "web:8000" in /etc/nginx/nginx.conf:9

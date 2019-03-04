@@ -55,13 +55,20 @@ class LoginUser(APIView):
 
 class GetSellerDetails(APIView):
     def get(self, request):
-        seller_id = request.GET.get("sellerId")
-        print(seller_id)
-        seller = User.objects.get(id=seller_id)
-        seller_detail = SellerProfile.objects.get(user=seller)
+        seller_name = request.GET.get("sellerName")
+        # print(seller_id)
+        try:
+            seller = User.objects.get(username = seller_name)
+            seller_detail = SellerProfile.objects.get(user=seller)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        obj = {
+            "seller_name": seller_name,
+            "Seller_rating":seller_detail.rating
+        }
         if seller_detail == dict():
             return Response(status=status.HTTP_204_NO_CONTENT)
-        return Response(data=seller_detail, status=status.HTTP_200_OK)
+        return Response(data=obj, status=status.HTTP_200_OK)
 
 
 class PlaceBid(APIView):
