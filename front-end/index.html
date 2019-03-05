@@ -5,6 +5,18 @@
     </title>
 </head>
 <body>
+
+<b>Sign Up</b>
+<input id="s_username" type="text" placeholder="Username">
+<input id="s_email" type="text" placeholder="Email">
+<input id="s_password" type="password" placeholder="Password">
+<input id="s_seller"  type="checkbox"> Seller
+<button onclick="signup()">Sign Up</button> <br>
+<b>Log In</b>
+<input id="l_email" type="text" placeholder="Email">
+<input id="l_password" type="password" placeholder="Password">
+<button onclick="login()">Log In</button>
+
 <h2>Items available for bidding</h2>
 <div id="item_list"></div>
 <h2>Activity Feed</h2>
@@ -18,6 +30,42 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 URL = "http://127.0.0.1/api/"
+userId = null;
+
+function signup() {
+    load = {
+        "username": $("#s_username").val(),
+        "email": $("#s_email").val(),
+        "password": $("#s_password").val(),
+    }
+    if ($('#s_seller').is(":checked"))
+    {
+      load["user-kind"] = "SELLER";
+    }
+    else {
+        load["user-kind"] = "BUYER";
+    }
+
+    $.post(URL + "register", load,
+    function(data, success){
+        console.log("Registered");
+        userId = data.userId
+    });
+}
+
+function login() {
+    load = {
+        "email": $("#l_email").val(),
+        "password": $("#l_password").val()
+    }
+    $.post(URL + "login", load,
+    function(data, success){
+        console.log("Logged In");
+        userId = data.userId
+    });
+}
+
+
 
 function rate_seller() {
     var iid = prompt("Enter Item ID to rate");
@@ -46,9 +94,13 @@ $.get(URL + "item", function(data, success) {
 });
 
 function onBid(itemId) {
+        if (userId == null) {
+            alert("You must log in first!");
+            return;
+        }
 		var bidValue = prompt(" Place your Bid");
 		request = {
-			"buyerId": 1,
+			"buyerId": userId,
 			"itemId": itemId,
 			"price": bidValue
 		}

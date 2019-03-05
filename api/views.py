@@ -10,6 +10,7 @@ from farmbid import celery_app
 from .tasks import check_for_bid_confirmation
 from datetime import timedelta
 import requests
+from .utils import get_predicted_price
 
 
 def index(request):
@@ -29,15 +30,15 @@ class RegisterUser(APIView):
             return Response(data)
         user = User.objects.create_user(username, email=email, password=password)
         if request.data['user-kind'] == 'BUYER':
-            BuyerProfile.objects.create(
+            profile = BuyerProfile.objects.create(
                 user=user
             )
         else:
-            SellerProfile.objects.create(
+            profile = SellerProfile.objects.create(
                 user=user,
                 aadhar_no=request.data['aadhar_no'],
             )
-        return Response(data={})
+        return Response(data={"userId": user.id})
 
 
 class LoginUser(APIView):
@@ -50,6 +51,13 @@ class LoginUser(APIView):
         if not user.check_password(password):
             return Response({'success': False, 'error': 'Password is invalid'})
         return Response({'success': True, 'email': email,})
+
+
+class GetUserId(APIView):
+    def post(self, request):
+        username = request.data['username']
+        user = User.objects.get(username=username)
+        return Response({"userid": user.id})
 
 
 class GetSellerDetails(APIView):
@@ -177,5 +185,14 @@ class ItemStats(APIView):
         prices.append(sum / count)
         return Response(data=prices)
 
+
+class SuggestPriceForX(APIView):
+    def post(self, request):
+        quantity = request.data['quantity']
+        seller_id = request.data['sellerId']
+        seller = SellerProfile.objects.get(id=seller_id)
+        rating = seller.rating
+        price = get_predicted_price(rating, quantity)
+        return Response({'suggested_price': price})
 
 
