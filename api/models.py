@@ -13,11 +13,6 @@ class SellerProfile(models.Model):
     total_ratings = models.IntegerField(default=0)
     n_ratings = models.IntegerField(default=0)
 
-    def save(self, **kwargs):
-        if self.n_ratings != 0:
-            self.rating = self.total_ratings / self.n_ratings
-        super().save(**kwargs)
-
 
 class Category(models.Model):
     name = models.CharField(max_length = 256)
@@ -37,6 +32,14 @@ class Item(models.Model):
 class Rating(models.Model):
     rated_on = models.ForeignKey(Item, on_delete=models.CASCADE)
     rating = models.IntegerField()
+
+    def save(self, **kwargs):
+        seller = self.rated_on.seller
+        seller.n_ratings += 1
+        seller.total_ratings += int(self.rating)
+        seller.rating = seller.total_ratings / seller.n_ratings
+        seller.save()
+        super().save(**kwargs)
 
 
 class Bid(models.Model):

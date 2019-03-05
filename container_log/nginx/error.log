@@ -11,4 +11,10 @@
 =======
 2019/03/04 23:47:21 [emerg] 1#1: host not found in upstream "web:8000" in /etc/nginx/nginx.conf:9
 2019/03/05 00:05:56 [error] 6#6: *1 connect() failed (113: No route to host) while connecting to upstream, client: 192.168.128.1, server: , request: "GET /api/item HTTP/1.1", upstream: "http://192.168.128.4:8000/api/item", host: "127.0.0.1", referrer: "http://127.0.0.1:7000/index.html"
+<<<<<<< HEAD
+>>>>>>> param
+=======
+2019/03/05 01:47:46 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.224.1, server: , request: "GET /admin/api/sellerprofile/1/change/ HTTP/1.1", upstream: "http://192.168.224.4:8000/admin/api/sellerprofile/1/change/", host: "127.0.0.1", referrer: "http://127.0.0.1/admin/api/sellerprofile/"
+2019/03/05 01:47:48 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.224.1, server: , request: "GET /admin/api/sellerprofile/1/change/ HTTP/1.1", upstream: "http://192.168.224.4:8000/admin/api/sellerprofile/1/change/", host: "127.0.0.1", referrer: "http://127.0.0.1/admin/api/sellerprofile/"
+2019/03/05 01:49:21 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.240.1, server: , request: "GET /api/item HTTP/1.1", upstream: "http://192.168.240.4:8000/api/item", host: "127.0.0.1", referrer: "http://127.0.0.1:7000/index.html"
 >>>>>>> param
