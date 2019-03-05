@@ -15,9 +15,11 @@
 
 	<body ng-app="basepriceApp">
 		<div ng-container="basepriceController" class="container">
-			<input type="text" ng-model="itemName">
-			<input type="text" ng-model="basePrice">
-			<input type="text" ng-model="quantity">
+			<input type="text" name="itemName">
+			<input type="text" name="basePrice">
+			<input type="text" name="quantity">
+			<input type="text" name="category">
+			<button onclick = "addItem();">Add Item</button>
 		</div>
 	</body>
 
