@@ -476,6 +476,7 @@
 192.168.160.1 - - [05/Mar/2019:01:26:00 +0000] "GET /admin/api/rating/1/change/ HTTP/1.1" 200 5363 "http://127.0.0.1/admin/api/rating/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
 192.168.160.1 - - [05/Mar/2019:01:26:00 +0000] "GET /admin/jsi18n/ HTTP/1.1" 200 3185 "http://127.0.0.1/admin/api/rating/1/change/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> param
 172.21.0.1 - - [05/Mar/2019:01:38:28 +0000] "POST /api/item HTTP/1.1" 500 13814 "http://127.0.0.1:1111/UI/setbaseprice.html" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 172.22.0.1 - - [05/Mar/2019:01:45:00 +0000] "POST /api/item HTTP/1.1" 200 13 "http://127.0.0.1:1111/UI/setbaseprice.html" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
@@ -510,6 +511,8 @@
 172.22.0.1 - - [05/Mar/2019:01:45:31 +0000] "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340 "http://127.0.0.1/admin/api/item/3/change/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 172.22.0.1 - - [05/Mar/2019:01:45:57 +0000] "GET /admin/ HTTP/1.1" 200 8877 "http://127.0.0.1/admin/api/item/3/change/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 =======
+=======
+>>>>>>> param
 192.168.176.1 - - [05/Mar/2019:01:40:57 +0000] "GET /api/item HTTP/1.1" 200 2 "http://127.0.0.1:7000/index.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
 192.168.176.1 - - [05/Mar/2019:01:41:11 +0000] "GET /admin/ HTTP/1.1" 200 8877 "http://127.0.0.1/admin/api/rating/1/change/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
 192.168.176.1 - - [05/Mar/2019:01:41:11 +0000] "GET /static/admin/css/base.css HTTP/1.1" 304 0 "http://127.0.0.1/admin/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
@@ -561,4 +564,42 @@
 192.168.240.1 - - [05/Mar/2019:01:49:45 +0000] "POST /api/rate_item HTTP/1.1" 200 0 "http://127.0.0.1:7000/index.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
 192.168.240.1 - - [05/Mar/2019:01:49:48 +0000] "GET /admin/api/sellerprofile/1/change/ HTTP/1.1" 200 6882 "http://127.0.0.1/admin/api/sellerprofile/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
 192.168.240.1 - - [05/Mar/2019:01:49:48 +0000] "GET /admin/jsi18n/ HTTP/1.1" 200 3185 "http://127.0.0.1/admin/api/sellerprofile/1/change/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
+<<<<<<< HEAD
+>>>>>>> param
+=======
+=======
+>>>>>>> param
+172.21.0.1 - - [05/Mar/2019:01:38:28 +0000] "POST /api/item HTTP/1.1" 500 13814 "http://127.0.0.1:1111/UI/setbaseprice.html" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:00 +0000] "POST /api/item HTTP/1.1" 200 13 "http://127.0.0.1:1111/UI/setbaseprice.html" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:17 +0000] "GET /admin/ HTTP/1.1" 200 8877 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:17 +0000] "GET /static/admin/css/base.css HTTP/1.1" 200 16225 "http://127.0.0.1/admin/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:17 +0000] "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412 "http://127.0.0.1/admin/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:17 +0000] "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976 "http://127.0.0.1/admin/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:17 +0000] "GET /static/admin/css/fonts.css HTTP/1.1" 200 423 "http://127.0.0.1/admin/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:17 +0000] "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348 "http://127.0.0.1/static/admin/css/fonts.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:17 +0000] "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564 "http://127.0.0.1/static/admin/css/fonts.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:17 +0000] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304 "http://127.0.0.1/static/admin/css/fonts.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:17 +0000] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331 "http://127.0.0.1/static/admin/css/base.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:17 +0000] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380 "http://127.0.0.1/static/admin/css/base.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:18 +0000] "GET /favicon.ico HTTP/1.1" 404 2072 "http://127.0.0.1/admin/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /admin/api/item/ HTTP/1.1" 200 4756 "http://127.0.0.1/admin/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271751 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /admin/jsi18n/ HTTP/1.1" 200 3185 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /static/admin/js/core.js HTTP/1.1" 200 7135 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /static/admin/js/actions.js HTTP/1.1" 200 6538 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /static/admin/js/urlify.js HTTP/1.1" 200 8972 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:26 +0000] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331 "http://127.0.0.1/static/admin/css/base.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:31 +0000] "GET /admin/api/item/3/change/ HTTP/1.1" 200 9242 "http://127.0.0.1/admin/api/item/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:31 +0000] "GET /static/admin/css/forms.css HTTP/1.1" 200 8505 "http://127.0.0.1/admin/api/item/3/change/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:31 +0000] "GET /admin/jsi18n/ HTTP/1.1" 200 3185 "http://127.0.0.1/admin/api/item/3/change/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:31 +0000] "GET /static/admin/js/change_form.js HTTP/1.1" 200 712 "http://127.0.0.1/admin/api/item/3/change/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:31 +0000] "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495 "http://127.0.0.1/admin/api/item/3/change/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:31 +0000] "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340 "http://127.0.0.1/admin/api/item/3/change/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.22.0.1 - - [05/Mar/2019:01:45:57 +0000] "GET /admin/ HTTP/1.1" 200 8877 "http://127.0.0.1/admin/api/item/3/change/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+>>>>>>> mayank_dev
 >>>>>>> param

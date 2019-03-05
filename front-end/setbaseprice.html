@@ -14,13 +14,18 @@
 	</head>
 
 	<body ng-app="basepriceApp">
+		<h2>Add Item</h2>
 		<div ng-container="basepriceController" class="container">
-			<input type="text" name="itemName">
-			<input type="text" name="basePrice">
-			<input type="text" name="quantity">
-			<input type="text" name="category">
+			<input type="text" name="username" placeholder="Username">
+			<input type="text" name="itemName" placeholder="Item Name">
+			<input type="text" name="basePrice" placeholder="Base Price">
+			<input type="text" name="quantity" placeholder="Quantity">
+			<input type="text" name="category" placeholder="Category">
 			<button onclick = "addItem();">Add Item</button>
 		</div>
+		<button onclick="plot_graph()">View Item Stats</button>
+		<div id="myDiv"></div>
+
 	</body>
 
 </html>

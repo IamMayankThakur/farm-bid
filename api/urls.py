@@ -9,5 +9,6 @@ urlpatterns = [
     path('rate_item', views.RateItem.as_view()),
     path('item', views.ItemView.as_view()),
     path('item-stats', views.ItemStats.as_view()),
+    path('get_uid', views.GetUserId.as_view()),
     path('', views.index),
 ]
