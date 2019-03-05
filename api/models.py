@@ -10,6 +10,13 @@ class SellerProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     aadhar_no = models.CharField(max_length=12)
     rating = models.DecimalField(null=True, blank=True, max_digits=4, decimal_places=2)
+    total_ratings = models.IntegerField(default=0)
+    n_ratings = models.IntegerField(default=0)
+
+    def save(self, **kwargs):
+        if self.n_ratings != 0:
+            self.rating = self.total_ratings / self.n_ratings
+        super().save(**kwargs)
 
 
 class Category(models.Model):

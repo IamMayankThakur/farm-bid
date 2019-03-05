@@ -7,6 +7,7 @@ urlpatterns = [
     path('seller_details', views.GetSellerDetails.as_view()),
     path('place_bid', views.PlaceBid.as_view()),
     path('rate_item', views.RateItem.as_view()),
-    path('item', views.Item.as_view()),
+    path('item', views.ItemView.as_view()),
+    path('item-stats', views.ItemStats.as_view()),
     path('', views.index),
 ]

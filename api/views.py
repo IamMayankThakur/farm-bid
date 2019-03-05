@@ -1,10 +1,9 @@
 from django.http import HttpResponse
 from django.utils import timezone
 from django.conf import settings
-from . models import SellerProfile, BuyerProfile, User, Bid, Item, Rating
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Item, Category, BuyerProfile, SellerProfile
+from .models import Item, Category, BuyerProfile, SellerProfile, Bid, Rating
 from django.contrib.auth.models import User
 from rest_framework import status
 from farmbid import celery_app
@@ -122,11 +121,11 @@ class RateItem(APIView):
     def post(self, request):
         item_id = request.data['ItemId']
         rating = request.data['rating']
-        Rating(rated_on=Item.objects.get(id=item_id), rating=rating)
+        Rating.objects.create(rated_on=Item.objects.get(id=item_id), rating=rating)
         return Response(status=status.HTTP_200_OK)
 
 
-class Item(APIView):
+class ItemView(APIView):
     def get(self, request):
         items = Item.objects.filter(cost_sold=None)
         data = []
@@ -146,6 +145,7 @@ class Item(APIView):
         cat = Category.objects.get(name=request.data['itemCatName'])
         item = Item.objects.create(
             name=request.data['itemname'],
+            quantity=request.data['quantity'],
             seller=request.data['sellerId'],
             base_price=request.data['itemBasePrice'],
             category=cat
@@ -174,7 +174,3 @@ class ItemStats(APIView):
                 sum = item.cost_sold
         prices.append(sum / count)
         return Response(data=prices)
-
-
-
-            prices.append(item.cost_sold)

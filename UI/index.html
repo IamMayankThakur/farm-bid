@@ -14,10 +14,16 @@
 
 	<body ng-app="myApp" class="container-fluid">
 		<script>
-			// var socket = io.connect('http://' + document.domain + ':' + location.port);
-			// socket.on('bid placed', function (data) {
-			// 	feeds = data.message
-			// })
+			var socket = io.connect('http://' + document.domain + ':' + '9000');
+			feeds = [];
+			socket.on('bid placed', function (data) {
+				feeds.push(data.message)
+			});
+			relevantBids = [];
+			socket.on('item sold', function (data) {
+				relevantBids.push(data.message)
+			});
+
 		</script>
 		<div ng-controller="testController" data-ng-init="init()" class="container">
 			<div class="col-md-6 left">
@@ -31,11 +37,11 @@
 				</div>
 			</div>
 			<div class="col-md-6 right">
-				<div class="column vertical" ng-repeat="entry in feeds">
-					<h3> {{ entry }} </h3>
+				<div class="column vertical" >
+					<!--<h3> {{ entry }} </h3>-->
 				</div>
-				<div class="column vertical" ng-repeat="relevantBid in relevantBids">
-					<h3>{{ relevantBid }}</h3>
+				<div class="column vertical" >
+					<!--<h3>{{ relevantBid }}</h3>-->
 				</div>
 			</div>
 		</div>
