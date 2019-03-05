@@ -27,3 +27,5 @@
 >>>>>>> param
 >>>>>>> mayank_dev
 >>>>>>> param
+2019/03/05 03:30:24 [emerg] 1#1: host not found in upstream "web:8000" in /etc/nginx/nginx.conf:9
+2019/03/05 03:36:13 [emerg] 1#1: host not found in upstream "web:8000" in /etc/nginx/nginx.conf:9

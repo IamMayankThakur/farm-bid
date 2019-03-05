@@ -192,7 +192,7 @@ class SuggestPriceForX(APIView):
         seller_id = request.data['sellerId']
         seller = SellerProfile.objects.get(id=seller_id)
         rating = seller.rating
-        price = get_predicted_price(rating, quantity)
+        price = get_predicted_price(quantity, rating)
         return Response({'suggested_price': price})
 
 
