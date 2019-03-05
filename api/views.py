@@ -143,7 +143,9 @@ class Item(APIView):
         return Response(data=data)
 
     def post(self, request):
+        print(request.data)
         cat = Category.objects.get(name=request.data['itemCatName'])
+        print(cat)
         item = Item.objects.create(
             name=request.data['itemname'],
             seller=request.data['sellerId'],
@@ -177,4 +179,3 @@ class ItemStats(APIView):
 
 
 
-            prices.append(item.cost_sold)
