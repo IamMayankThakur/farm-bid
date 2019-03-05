@@ -148,7 +148,7 @@ class ItemView(APIView):
         item = Item.objects.create(
             name=request.data['itemname'],
             quantity=request.data['quantity'],
-            seller=request.data['sellerId'],
+            seller=SellerProfile.objects.get(id= request.data['sellerId']),
             base_price=request.data['itemBasePrice'],
             category=cat
         )
