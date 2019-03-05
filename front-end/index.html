@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>
+        FarmBid Dashboard
+    </title>
+</head>
+<body>
+<h2>Items available for bidding</h2>
+<div id="item_list"></div>
+<h2>Activity Feed</h2>
+<div id="activity_feed"></div>
+<h2>Bid information</h2>
+<div id="bids_feed"></div>
+
+<button onclick="rate_seller()">Rate Seller</button>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+URL = "http://127.0.0.1/api/"
+
+function rate_seller() {
+    var iid = prompt("Enter Item ID to rate");
+    var rating = prompt("Give the rating");
+    data = {
+        "ItemId": iid,
+        "rating": rating
+    }
+    $.post(URL + "rate_item", data, function (data, success) {console.log("Rated");});
+
+}
+
+
+
+$.get(URL + "item", function(data, success) {
+    //console.log("hello");
+ snippet = "";
+ for(i=0; i<data.length; i++) {
+  snippet += "<div>" + "Item Name: " + data[i].itemName + "<br>" + "Base Price: " +
+  data[i].basePrice + "<br>" + "Seller Name: " + data[i].sellerName + "<br>" +
+  "Seller Rating: " + data[i].sellerRating + "<br/><button onclick=" + "onBid(" +
+  data[i].itemId + ");" + ">Place Bid</button>" +
+  "</div>"
+ }
+ $("#item_list").html(snippet);
+});
+
+function onBid(itemId) {
+		var bidValue = prompt(" Place your Bid");
+		request = {
+			"buyerId": 1,
+			"itemId": itemId,
+			"price": bidValue
+		}
+		// $http.post(ip + "place_bid", request);
+		$.post(URL + "place_bid", request, function(data, status) {
+		    console.log("POST sent");});
+}
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+<script>
+    var socket = io.connect('http://' + document.domain + ':' + '9000');
+    feeds = [];
+    socket.on('bid placed', function (data) {
+        feeds.push(data.message);
+        // text = $("#activity_feed").html();
+        text = "";
+        for (i=0; i<feeds.length; i++) {
+            text += "<p>" + feeds[i] + "</p>";
+        }
+        $("#activity_feed").html(text);
+    });
+    relevantBids = [];
+    socket.on('item sold', function (data) {
+        relevantBids.push(data.message)
+        text = "";
+        for (i=0; i<feeds.length; i++) {
+            text += "<p>" + relevantBids[i] + "</p>";
+        }
+        $("#bids_feed").html(text);
+    });
+</script>
+</body>
+</html>

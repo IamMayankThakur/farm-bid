@@ -1,5 +1,5 @@
 var app = angular.module('myApp', []);
-var ip = "127.0.0.1/api/";
+var ip = "http://127.0.0.1/api/";
 app.controller('testController', function ($scope, $http) {
 	$scope.bids = [{
 		'itemName': "name",
@@ -17,7 +17,7 @@ app.controller('testController', function ($scope, $http) {
 			"itemId": this.bid.itemId,
 			"price": bidValue
 		}
-		// $http.post(ip + "place_bid", request);
+		$http.post(ip + "place_bid", request);
 		// Create socket io connection
 	}
 
